@@ -10,7 +10,7 @@ function firstViews() {
     <Card>
       <TextInput label="texte"  value={text}   onChangeText={text => setText(text)} />
       <IconButton icon="plus-circle" iconColor='#E4BE9E' size={70} onPress={() => console.log({text})}/>
-      <Text variant="displayLarge">{text}</Text>
+      <Text variant="displayLarge">{}</Text>
     </Card>
   )
 }

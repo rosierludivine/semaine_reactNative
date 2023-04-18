@@ -1,12 +1,9 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { IconButton, MD3Colors } from 'react-native-paper';
+import { StyleSheet, Text, View } from 'react-native';
+import { IconButton } from 'react-native-paper';
 
 function homeViews({navigation}) {
-
-   
 
   return (
     <View style={styles.container}>
@@ -64,9 +61,7 @@ const styles = StyleSheet.create({
     },
     buttonChangeVue: {
       width:'60%',
-
-      textAlign: 'center', 
-      alignItems: 'center'
+      flex: 'end',
     }, 
     headerTitle: {
         textAlign: 'center',

@@ -1,9 +1,9 @@
-import {React, Text} from 'react'
+import { View, Text } from "react-native"
 
 function firstViews() {
   return (
     <View>
-        <Text>bienvenue dans le nouveau composant </Text>
+        <Text>Welcome to the second screen</Text>
     </View>
   )
 }

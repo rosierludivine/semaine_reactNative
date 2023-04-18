@@ -1,6 +1,7 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 function homeViews({navigation}) {
 
@@ -14,20 +15,25 @@ function homeViews({navigation}) {
       </View>
 
       <View style={styles.containerFlexCorps}>
-        <Text>CORPS </Text>
-        {/* creation d'un bouton pour changement de vue  */}
-        <View style={styles.flexNote}>
-            {/* cette view va etre la note  */}
-            <Text style={styles.headerTitle}>Ma note</Text>
 
+        <View style={styles.flexNote}>
+
+            {/* cette view va etre la note  */}
+            <Text style={styles.textBox} onPress={() => {navigation.navigate('firstViews')}} title='Go to second page'>Mes notes </Text>
+        </View>
             {/* Créer un lien vers une nouvelle page  */}
-            <Button onPress={() => {navigation.navigate('firstViews')}} title='Go to second page'/>
+        
+        <View style={styles.addNotes}>
 
         </View>
+
+        {/* ajout d'une notes */}
+        
+
       </View>
 
       <View style={styles.containerFlexFooter}>
-        <Text>Footer </Text>
+        <Text>Pas le droit de copier, Ludivine Rosier </Text>
       </View>
       
       <StatusBar style="auto" />
@@ -46,11 +52,11 @@ const styles = StyleSheet.create({
       padding:'3%',
       backgroundColor:'#B6E2CB',
       textAlign: 'center', 
-      alignItems: 'center'
     },
     containerFlexCorps: {
       width:'100%',
       flex: 5,
+      alignItems:'center',
       backgroundColor: '#fff',
     },
     containerFlexFooter: {
@@ -61,14 +67,29 @@ const styles = StyleSheet.create({
     },
     buttonChangeVue: {
       width:'60%',
+
+      textAlign: 'center', 
+      alignItems: 'center'
     }, 
     headerTitle: {
         textAlign: 'center',
         fontSize: 24 
     },
     flexNote: {
-        width: '60%',
-        backgroundColor: '#B6E2CB'
+        margin: '5%',
+        padding: '3%',
+        width: '80%',
+        backgroundColor: '#EEDFD2',
+        borderRadius: 8,
+    },
+    textBox: {
+        fontSize:20
+    }, 
+    addNotes: {
+        backgroundColor: '#E4BE9E',
+        padding:'10%',
+        borderRadius: 100,
+        
     }
   });
 export default homeViews ;

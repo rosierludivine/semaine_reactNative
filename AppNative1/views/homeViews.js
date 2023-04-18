@@ -2,13 +2,13 @@ import React from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { IconButton, MD3Colors } from 'react-native-paper';
 
 function homeViews({navigation}) {
 
    
 
   return (
-    
     <View style={styles.container}>
       <View style={styles.containerFlexTitle}>
         <Text style={styles.headerTitle}> My Notes </Text>
@@ -22,13 +22,10 @@ function homeViews({navigation}) {
             <Text style={styles.textBox} onPress={() => {navigation.navigate('firstViews')}} title='Go to second page'>Mes notes </Text>
         </View>
             {/* Créer un lien vers une nouvelle page  */}
-        
-        <View style={styles.addNotes}>
 
-        </View>
 
         {/* ajout d'une notes */}
-        
+        <IconButton icon="plus-circle" iconColor='#E4BE9E' size={70} onPress={() => {navigation.navigate('NewNotes')}} title='Ajouter une note ' />
 
       </View>
 

@@ -1,10 +1,14 @@
-import { View, Text } from "react-native"
+
+import { IconButton, MD3Colors } from 'react-native-paper';
 
 function firstViews() {
   return (
-    <View>
-        <Text>Welcome to the second screen</Text>
-    </View>
+    <IconButton
+    icon="plus-circle"
+    iconColor='#E4BE9E'
+    size={70}
+    onPress={() => console.log('Vous avez ajouter une note ')}
+  />
   )
 }
 

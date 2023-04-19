@@ -14,12 +14,12 @@ export const WriteFile = async (data) => {
             const fileContent = await readAsStringAsync(FileSystem.documentDirectory + 'file.txt')
             //Trouver un moyen pour ajouter le contenu passe en param au contenu existant 
         }else{
-            await FilesSystem.writeAsStringAsync(FileSystem.documentDirectory + 'file.txt', data)
+            await FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'file.txt', data)
         }
         
         // si non recuperer les données
     }catch (error){
-        console.log('erreur non catcge writefile util.js',error)
+        console.log('erreur non catch writefile util.js',error)
     }
 
 }

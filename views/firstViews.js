@@ -1,17 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { TextInput } from 'react-native-paper';
+import { WriteFile } from './components/utils';
+import * as FileSystem from 'expo-file-system';
+
 
 function homeViews({navigation}) {
   
-  const [enteredTask, setEnteredTask] = useState([]);
+  const [enteredTask, setEnteredTask] = useState("");
 
-  const addNote = (note) => {
-    if (note == null)return;
-    setEnteredTask ([...enteredTask, enteredTask])
-    
+  const addNoteHandler = async() => {
+    console.log(enteredTask)
+
+    await WriteFile(enteredTask)
+    const fileInfo = await FileSystem.getInfoAsync(FileSystem.documentDirectory+'file.txt')
+    console.log('file info in addNoteHandler: ', fileInfo)
   }
 
   return (
@@ -21,9 +26,9 @@ function homeViews({navigation}) {
       </View>
 
       <View style={styles.containerFlexCorps}>
+        
 
         <View style={styles.flexNote}>
-
             {/* cette view va etre la note  */}
             <Text style={styles.textBox} onPress={() => {navigation.navigate('firstViews')}} title='Go to second page'>Mes notes </Text>
         </View>
@@ -33,11 +38,11 @@ function homeViews({navigation}) {
 
         {/* ajout d'une notes */}
         <TextInput style={styles.inputTextNom} label="Nouvelle note"   mode='outlined' value={enteredTask} onChangeText={(value) => setEnteredTask(value)}/>
-        <IconButton   icon="plus-circle" iconColor='#E4BE9E' size={70} onPress={addNote} title='Ajouter une note ' />
+        <IconButton   icon="plus-circle" iconColor='#E4BE9E' size={70} onPress={addNoteHandler} title='Ajouter une note ' />
       
       </View>
       <View style={styles.containerFlexFooter}>
-        <Text>Pas le droit de copier, Ludivine Rosier </Text>
+        <Text>Pas le droit d'auteur, Ludivine Rosier </Text>
       </View>
       
       <StatusBar style="auto" />

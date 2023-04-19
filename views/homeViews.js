@@ -27,7 +27,7 @@ function homeViews({navigation}) {
       </View>
 
       <View style={styles.containerFlexFooter}>
-        <Text>Pas le droit de copier, Ludivine Rosier </Text>
+        <Text>Pas le droit d'auteur, Ludivine Rosier </Text>
       </View>
       
       <StatusBar style="auto" />

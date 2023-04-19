@@ -1,15 +1,16 @@
 import * as FileSystem from 'expo-file-system'
 import { readAsStringAsync } from 'expo-file-system'
 
+//ecrire  dans un fichier 
 export const WriteFile = async (data) => {
     //verifier le contenu de data 
-
+    
     try {
         //verifier si le fichier est vide 
         const fileInfo = await FileSystem.getInfoAsync(FileSystem.documentDirectory + 'file.txt')
 
         if (fileInfo.exists){
-            // lire le fichier et recuperer les données existantes
+            // regarder si le fichier est deja existant 
             const fileContent = await readAsStringAsync(FileSystem.documentDirectory + 'file.txt')
             //Trouver un moyen pour ajouter le contenu passe en param au contenu existant 
         }else{
@@ -20,6 +21,5 @@ export const WriteFile = async (data) => {
     }catch (error){
         console.log('erreur non catcge writefile util.js',error)
     }
-
 
 }

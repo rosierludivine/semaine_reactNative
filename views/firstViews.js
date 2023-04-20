@@ -5,6 +5,7 @@ import { IconButton } from 'react-native-paper';
 import { TextInput } from 'react-native-paper';
 import { WriteFile } from './components/utils';
 import * as FileSystem from 'expo-file-system';
+import * as MailComposer from 'expo-mail-composer';
 
 
 function homeViews({navigation}) {
@@ -17,6 +18,14 @@ function homeViews({navigation}) {
     await WriteFile(enteredTask)
     const fileInfo = await FileSystem.getInfoAsync(FileSystem.documentDirectory+'file.txt')
     console.log('file info in addNoteHandler: ', fileInfo)
+  }
+
+  const sentMailHandler = async(fileUri) => {
+    const Urlfile = {
+      attachments: [fileUri],
+  }
+
+  await MailComposer.composeAsync(Urlfile)
   }
 
   return (
@@ -39,10 +48,12 @@ function homeViews({navigation}) {
         {/* ajout d'une notes */}
         <TextInput style={styles.inputTextNom} label="Nouvelle note"   mode='outlined' value={enteredTask} onChangeText={(value) => setEnteredTask(value)}/>
         <IconButton   icon="plus-circle" iconColor='#E4BE9E' size={70} onPress={addNoteHandler} title='Ajouter une note ' />
+        <IconButton   icon="send" iconColor='#E4BE9E' size={70} onPress={sentMailHandler} title='Ajouter une note ' />
+
       
       </View>
       <View style={styles.containerFlexFooter}>
-        <Text>Pas le droit d'auteur, Ludivine Rosier </Text>
+        <Text>Pas le droit de copier, Ludivine Rosier </Text>
       </View>
       
       <StatusBar style="auto" />

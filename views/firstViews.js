@@ -20,14 +20,12 @@ function homeViews({navigation}) {
     console.log('file info in addNoteHandler: ', fileInfo)
   }
 
-  const sentMailHandler = async(fileUri) => {
-    const Urlfile = {
-      attachments: [fileUri],
-  }
-
-  await MailComposer.composeAsync(Urlfile)
-  }
-
+  const changeTodoHandler = async () => {
+      
+    // console.log(enteredTodo)
+    await WriteFile (enteredTodo)
+    await mail (FileSystem.documentDirectory + 'file.txt')
+}
   return (
     <View style={styles.container}>
       <View style={styles.containerFlexTitle}>
@@ -48,7 +46,7 @@ function homeViews({navigation}) {
         {/* ajout d'une notes */}
         <TextInput style={styles.inputTextNom} label="Nouvelle note"   mode='outlined' value={enteredTask} onChangeText={(value) => setEnteredTask(value)}/>
         <IconButton   icon="plus-circle" iconColor='#E4BE9E' size={70} onPress={addNoteHandler} title='Ajouter une note ' />
-        <IconButton   icon="send" iconColor='#E4BE9E' size={70} onPress={sentMailHandler} title='Ajouter une note ' />
+        <IconButton   icon="send" iconColor='#E4BE9E' size={70} onPress={changeTodoHandler} title='Ajouter une note ' />
 
       
       </View>

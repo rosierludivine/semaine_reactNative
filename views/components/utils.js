@@ -13,6 +13,9 @@ export const WriteFile = async (data) => {
             // regarder si le fichier est deja existant 
             const fileContent = await readAsStringAsync(FileSystem.documentDirectory + 'file.txt')
             //Trouver un moyen pour ajouter le contenu passe en param au contenu existant 
+            const newFile = fileContent + " " + data
+            //ecrire dans le dossier les nouvelles données 
+            await FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'file.txt', newFile)
         }else{
             await FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'file.txt', data)
         }
@@ -24,23 +27,14 @@ export const WriteFile = async (data) => {
 
 }
 
-// envoie d'un mail
-export const sendFileByEmail = async (recipient, fileUri) => {
-    let _recipient = recipient ? recipient : 'ludivine.rosier38@gmail.com';
-    try {
-        const fileInfo = await getFile(fileUri)
-        console.log('file info before mail is sent: ', fileInfo);
-        const fileContent = await getFileContent(fileUri);
-        console.log('file content about to be sent by email: ', fileContent)
-    } catch(err) {
-        console.log('file does not exist: ', fileInfo)
-    }
+// envoyer un mail
 
-    const options = {
+
+export const mail = async (fileUri) => {
+
+    const Urlfile = {
         attachments: [fileUri],
-        recipients: [_recipient],
-        subject: 'Objet du mail'
     }
 
-    await MailComposer.composeAsync(options)
+    await MailComposer.composeAsync(Urlfile)
 }

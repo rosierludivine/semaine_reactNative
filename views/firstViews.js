@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { TextInput } from 'react-native-paper';
 import { WriteFile } from './components/utils';
 import * as FileSystem from 'expo-file-system';
+
 
 
 function homeViews({navigation}) {
@@ -26,6 +27,7 @@ function homeViews({navigation}) {
     <View style={styles.container}>
       <View style={styles.containerFlexTitle}>
         <Text style={styles.headerTitle}> My Notes </Text>
+        <Image style={styles.Image1} src={'./image/test.jpg'}></Image>
       </View>
 
       <View style={styles.containerFlexCorps}>

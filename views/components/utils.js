@@ -1,5 +1,6 @@
 import * as FileSystem from 'expo-file-system'
 import { readAsStringAsync } from 'expo-file-system'
+import * as MailComposer from 'expo-mail-composer'
 
 //ecrire  dans un fichier 
 export const WriteFile = async (data) => {
@@ -16,6 +17,7 @@ export const WriteFile = async (data) => {
             const newFile = fileContent + " " + data
             //ecrire dans le dossier les nouvelles données 
             await FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'file.txt', newFile)
+            console.log('file content if file exists: ', fileContent)
         }else{
             await FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'file.txt', data)
         }
@@ -28,8 +30,6 @@ export const WriteFile = async (data) => {
 }
 
 // envoyer un mail
-
-
 export const mail = async (fileUri) => {
 
     const Urlfile = {

@@ -5,7 +5,6 @@ import { IconButton } from 'react-native-paper';
 import { TextInput } from 'react-native-paper';
 import { WriteFile } from './components/utils';
 import * as FileSystem from 'expo-file-system';
-import * as MailComposer from 'expo-mail-composer';
 
 
 function homeViews({navigation}) {
@@ -13,19 +12,16 @@ function homeViews({navigation}) {
   const [enteredTask, setEnteredTask] = useState("");
 
   const addNoteHandler = async() => {
-    console.log(enteredTask)
-
-    await WriteFile(enteredTask)
-    const fileInfo = await FileSystem.getInfoAsync(FileSystem.documentDirectory+'file.txt')
-    console.log('file info in addNoteHandler: ', fileInfo)
+    setEnteredTask(data)
   }
 
-  const changeTodoHandler = async () => {
+  const sendMailHandler = async () => {
       
     // console.log(enteredTodo)
     await WriteFile (enteredTodo)
     await mail (FileSystem.documentDirectory + 'file.txt')
 }
+
   return (
     <View style={styles.container}>
       <View style={styles.containerFlexTitle}>
@@ -46,9 +42,19 @@ function homeViews({navigation}) {
         {/* ajout d'une notes */}
         <TextInput style={styles.inputTextNom} label="Nouvelle note"   mode='outlined' value={enteredTask} onChangeText={(value) => setEnteredTask(value)}/>
         <IconButton   icon="plus-circle" iconColor='#E4BE9E' size={70} onPress={addNoteHandler} title='Ajouter une note ' />
-        <IconButton   icon="send" iconColor='#E4BE9E' size={70} onPress={changeTodoHandler} title='Ajouter une note ' />
+        {/* envoyer par mail */}
+        <IconButton icon="send" iconColor='#E4BE9E' size={70} onPress={sendMailHandler} title='Envoyer par mail'/>
 
-      
+        {/* {enteredTask.map(enteredTask, index) => {
+          <View style={styles.containerFlexTitle}>
+          <Text style={styles.headerTitle} key={index? index:0}> {enteredTask} </Text>
+        </View>
+        }
+
+        } */}
+
+
+
       </View>
       <View style={styles.containerFlexFooter}>
         <Text>Pas le droit de copier, Ludivine Rosier </Text>
